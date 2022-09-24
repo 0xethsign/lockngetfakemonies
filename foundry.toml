@@ -7,7 +7,7 @@
 solc_version = '0.8.15'
 auto_detect_solc = false
 optimizer_runs = 1_000
-viaIR: true
+viaIR= true
 
 [fuzz]
 runs = 1_000
