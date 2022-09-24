@@ -4,7 +4,7 @@ pragma solidity ^0.8.15;
 import "solmate/tokens/ERC20.sol";
 import "solmate/auth/Owned.sol";
 
-contract FakeMoney is ERC20, Owned{
+contract FakeMoney is ERC20, Owned {
     /**
      * @notice Constructor
      */
