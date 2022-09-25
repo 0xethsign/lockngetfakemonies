@@ -14,4 +14,4 @@ runs = 1_000
 
 # Extreme Fuzzing CI Profile :P
 [profile.fuzz.ci]
-runs = 100_000
+viaruns = 100_000
