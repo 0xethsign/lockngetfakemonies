@@ -11,6 +11,7 @@ import "openzeppelin-contracts/token/ERC721/IERC721.sol";
 import "./IFakeMonies.sol";
 import "./uniswap/interfaces/INonfungiblePositionManager.sol";
 import "./ILock.sol";
+import "forge-std/console.sol";
 
 contract Lock is ILock, Owned {
     mapping (uint256 => address) LP;
@@ -79,7 +80,9 @@ contract Lock is ILock, Owned {
         uint160 _sqrtRatioAX96 = TickMath.getSqrtRatioAtTick(_tickLower);
         uint160 _sqrtRatioBX96 = TickMath.getSqrtRatioAtTick(_tickUpper);
         (_amount0,_amount1) = LiquidityAmounts.getAmountsForLiquidity(_sqrtRatioX96,_sqrtRatioAX96,_sqrtRatioBX96,_liquidity);
-        (int24 tick,) = OracleLibrary.consult(address(_uniswapV3Pool), 3600);
+        (int24 tick,) = OracleLibrary.consult(address(_uniswapV3Pool), 7200);
+        console.log("amount0 is %s", _amount0);
+        console.log("amount1 is %s", _amount1);
         // amountOut is the number of tokens of token1 that one can swap for amount0 of token0
         uint amountOut = OracleLibrary.getQuoteAtTick(tick, uint128(_amount0), _token0, _token1); 
         // price of token1 in terms of token0
